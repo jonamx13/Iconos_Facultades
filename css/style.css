@@ -9,6 +9,7 @@ html, body {
 .grid-facultades {
     background-color: #6B3288;
     display: grid;
+    grid-auto-flow: row;
     grid-template-rows: repeat(auto);
     gap: 10px;
     overflow:scroll;
