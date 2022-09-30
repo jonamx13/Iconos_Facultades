@@ -11,6 +11,7 @@ html, body {
     display: grid;
     grid-template-rows: repeat(auto);
     gap: 10px;
+    overflow:scroll;
   }
 
 /*GRID_DESKTOP*/
