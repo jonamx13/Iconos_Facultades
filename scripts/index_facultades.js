@@ -7,7 +7,7 @@ function getAnimation(facultad) {
     loop: true,
     autoplay: true,
     path: `./assets/${this.facultad}.json`
-  })
+  });
 
 }
 
@@ -23,4 +23,8 @@ let facultades = [
 
 facultades.forEach(function(facultad) {
   getAnimation(facultad);
+
+  
 })
+
+

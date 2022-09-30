@@ -1,47 +1,121 @@
-html, body {
-    background-color: #fff;
-    width: 100%;
-    height:100%;
+:root {
+  --mainFont : Avenir-Bold;
+  --white: #FFFFFF;
+  --purple:#6B3288;
+  --yellow:rgba(255, 168, 0, .80);
+}
+
+/*Fuentes*/
+@font-face {
+  font-family: 'Avenir-Bold';
+  src: url("../assets/fonts/AvenirNext-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Avenir-Demibold';
+  src: url("../assets/fonts/AvenirNext-DemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Avenir-Medium';
+  src: url("../assets/fonts/AvenirNext-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Avenir-Regular';
+  src: url("../assets/fonts/AvenirNext-Regular.ttf") format("truetype");
+}
+
+html{
+    background-color: var(--white);
     margin: 0 auto;
-    overflow: hidden;
+    padding: 0;
+    font-family: var(--mainFont);
+    font-size: 62.5%;
   }
-  
+
+h2 {
+  color: white;
+  font-size: 8vw;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.facultades {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+  background-color: var(--purple);
+}
+
 .grid-facultades {
-    background-color: #6B3288;
+        /*Measurements*/
+  --maxWidth: 90vw;
+  --gapFixed: 1rem;
+  --columnsAmount:1;
+  --row-size: calc(
+    ( var(--maxWidth) - (var(--gapFixed) * (var(--columnsAmount) - 1))
+    ) / var(--columnsAmount)
+  );
+
     display: grid;
-    grid-auto-flow: row;
-    grid-template-rows: repeat(auto);
-    gap: 10px;
-    overflow:scroll;
+    margin: 0 auto;
+    width: 100%;
+    max-width: var(--maxWidth);
+    
+    grid-template-columns: repeat(var(--columnsAmount), 1fr);
+    grid-auto-rows: var(--row-size);
+  
+    grid-column-gap: var(--gapFixed);
+    grid-row-gap: var(--gapFixed);
   }
+
+.grid-facultades p {
+  margin: 10%;
+  padding: 10%;
+  font-size:150%;
+
+}
 
 /*GRID_DESKTOP*/
 @media (min-width: 1023px) {
+  h2 {
+    font-size: 8vw;
+  }
+
   .grid-facultades {
-    grid-template-columns: repeat(8,1fr);
+    --columnsAmount: 8;
+
   }
 }
 
   /*GRID_TABLET*/
   @media (min-width: 768px) and (max-width: 1023px) {
-        .grid-facultades {
-          grid-template-columns: repeat(4,1fr);
-        }
+
+    h2 {
+      font-size: 10vw;
+    }
+    .grid-facultades {
+      --columnsAmount: 4;
+    }
   }
+
   /*GRID_MOBILE*/
   @media (max-width: 767px) {
+    h2 {
+      font-size: 14.5vw;
+    }
+
     .grid-facultades {
-      grid-template-columns: repeat(2,1fr);
+      --columnsAmount: 2;
     }
   }
 
 .card {
   position: relative;
   margin: 0 auto;
-  min-width: 150px;
-  max-width: 200px;
-  min-height: 150px;
-  max-height: 200px;
+  height: 100%;
+  width: 100%;
 }
 
 .card .face {
@@ -51,26 +125,32 @@ html, body {
 }
 
 .card .front {
-  transform: perspective(600px) rotateY(0deg) scaleX(1);
+  transform: perspective(60rem) rotateY(0deg) scaleX(1);
+  display: flex;
+
+  width: 100%;
+  height: 100%;
 }
 
 .card .back {
-  transform: perspective(600px) rotateY(180deg);
+  transform: perspective(60rem) rotateY(180deg);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   width: 100%;
   height: 100%;
-  color: white;
-  background: rgba(255, 168, 0, .80);
+  color: var(--white);
+  background: var(--yellow);
 }
 
+
+
 .card:hover .front {
-  transform: perspective(600px) rotateY(180deg);
+  transform: perspective(60rem) rotateY(180deg);
 
 }
 
 .card:hover .back {
-  transform: perspective(600px) rotateY(360deg);
+  transform: perspective(60rem) rotateY(360deg);
 }
