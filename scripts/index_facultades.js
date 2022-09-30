@@ -6,7 +6,7 @@ function getAnimation(facultad) {
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: `../assets/${this.facultad}.json`
+    path: `./assets/${this.facultad}.json`
   })
 
 }
