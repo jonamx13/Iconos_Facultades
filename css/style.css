@@ -38,10 +38,25 @@ h2 {
   margin: 2rem auto;
 }
 
+
+.corner-yellow {
+  display: flex;
+  align-self: flex-start;
+  height: 4rem;
+  width: 4rem;
+}
+.corner-blue {
+  display: flex;
+  align-self: flex-end;
+  height: 4rem;
+  width: 4rem;
+}
+
 .facultades {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   width: 100vw;
   margin: 0 auto;
   padding-bottom: 5rem;
@@ -73,21 +88,21 @@ h2 {
 .grid-facultades p {
   margin: 10%;
   padding: 10%;
-  font-size:150%;
+  font-size:180%;
 
 }
 
-/*GRID_DESKTOP*/
-@media (min-width: 1023px) {
-  h2 {
+  /*GRID_DESKTOP*/
+  @media (min-width: 1024px) {
+    h2 {
     font-size: 8vw;
   }
 
   .grid-facultades {
     --columnsAmount: 8;
 
+    }
   }
-}
 
   /*GRID_TABLET*/
   @media (min-width: 768px) and (max-width: 1023px) {
@@ -105,9 +120,11 @@ h2 {
     h2 {
       font-size: 14.5vw;
     }
-
+    
     .grid-facultades {
+      --maxWidth: 90vw;
       --columnsAmount: 2;
+      --row-size: 60vw;
     }
   }
 
@@ -116,6 +133,8 @@ h2 {
   margin: 0 auto;
   height: 100%;
   width: 100%;
+  cursor: pointer;
+  transition: .5s;
 }
 
 .card .face {
@@ -124,33 +143,63 @@ h2 {
   transition: .5s;
 }
 
-.card .front {
-  transform: perspective(60rem) rotateY(0deg) scaleX(1);
-  display: flex;
+/** Animation media-queries**/
 
-  width: 100%;
-  height: 100%;
-}
+  /*Desktop_Cards*/
+  @media (min-width: 1024px) {
 
-.card .back {
-  transform: perspective(60rem) rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  color: var(--white);
-  background: var(--yellow);
-}
+    .card .front {
+      transform: perspective(60rem) rotateY(0deg) scaleX(1);
+      display: flex;
+    
+      width: 100%;
+      height: 100%;
+    }
+    
+    .card .back {
+      transform: perspective(60rem) rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      color: var(--white);
+      background: var(--yellow);
+    }
+    .card:hover .front {
+      transform: perspective(60rem) rotateY(180deg);
+    }
+    
+    .card:hover .back {
+        transform: perspective(60rem) rotateY(360deg) ;
+    }
+      
+  }
 
+  /*Touch_Cards*/
+  @media (max-width: 1023px) {
 
+    .card .front {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 100%;
+      height: 100%;
+    }
+    
+    
+    .card .back {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      height: 25.5%;
+      color: var(--white);
+      background: var(--yellow);
+    }
 
-.card:hover .front {
-  transform: perspective(60rem) rotateY(180deg);
+  }
 
-}
-
-.card:hover .back {
-  transform: perspective(60rem) rotateY(360deg);
-}

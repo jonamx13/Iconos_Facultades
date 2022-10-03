@@ -1,13 +1,26 @@
 
 function getAnimation(facultad) {
   this.facultad = facultad;
-  bodymovin.loadAnimation({
-    container: document.querySelector(`.${this.facultad}`),
+
+  let iconFacultad = document.querySelector(`.${this.facultad}`);
+  let animFacultad = bodymovin.loadAnimation({
+    container: iconFacultad,
     renderer: 'svg',
-    loop: true,
-    autoplay: true,
+    loop: false,
+    autoplay: false,
     path: `./assets/${this.facultad}.json`
   });
+  
+  var directionPlayFac = 1;
+  iconFacultad.addEventListener('mouseenter', (e) => {
+  animFacultad.setDirection(directionPlayFac);
+  animFacultad.play();
+});
+
+  iconFacultad.addEventListener('mouseleave', (e) => {
+  animFacultad.setDirection(-directionPlayFac);
+  animFacultad.play();
+});
 
 }
 
