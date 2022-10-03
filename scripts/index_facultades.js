@@ -1,7 +1,7 @@
 
 function getAnimation(facultad) {
   this.facultad = facultad;
-
+  let animationCompleted = true;
   let iconFacultad = document.querySelector(`.${this.facultad}`);
   let animFacultad = bodymovin.loadAnimation({
     container: iconFacultad,
@@ -10,18 +10,18 @@ function getAnimation(facultad) {
     autoplay: false,
     path: `./assets/${this.facultad}.json`
   });
+
   
   var directionPlayFac = 1;
-  iconFacultad.addEventListener('mouseenter', (e) => {
+  iconFacultad.addEventListener("mouseenter", () => {
   animFacultad.setDirection(directionPlayFac);
   animFacultad.play();
 });
 
-  iconFacultad.addEventListener('mouseleave', (e) => {
+  iconFacultad.addEventListener('mouseleave', () => {
   animFacultad.setDirection(-directionPlayFac);
   animFacultad.play();
 });
-
 }
 
 //Animaciones de facultades
